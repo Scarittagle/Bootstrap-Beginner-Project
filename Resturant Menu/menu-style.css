@@ -1,0 +1,140 @@
+/* RESTUARANT HTML ASSIGNMENT */
+/* CSS FILE FOR THE WEBPAGE   */
+/* WEIWEI SU - U17420699      */
+/* This Style Design is majorly from Wordpressaholic by Kartik */
+
+.menu-body {
+    max-width: 680px;
+    margin: 0 auto;
+    display: block;
+    color: rgb(92, 92, 92);
+}
+
+.section {
+    margin-bottom: 80px;
+}
+
+.name {
+    font-family: georgia;
+    display: block;
+    margin: 20px 0;
+    text-align: center;
+}
+
+.name-in-Chinese {
+    font-size: 50px;
+    font-weight: normal;
+}
+
+.name-of-restaurant {
+    font-size: 30px;
+    font-weight: normal;
+}
+
+.address {
+    font-size: 20px;
+    font-weight: normal;
+}
+
+.NavTitle {
+    font-family: georgia;
+    display: block;
+    font-size: 15px;
+    font-weight: normal;
+    margin: 20px 0;
+}
+
+.menu-title-in-chinese {
+    font-family: georgia;
+    display: block;
+    font-size: 50px;
+    font-weight: normal;
+    margin: 20px 0;
+    text-align: center;
+}
+
+.menu-title {
+    font-family: georgia;
+    display: block;
+    font-size: 50px;
+    font-weight: normal;
+    margin: 20px 0;
+    text-align: center;
+}
+
+#section-image1 {
+    display: block;
+    margin: 0 auto;
+}
+
+#section-image2 {
+    display: block;
+    margin: 0 auto;
+}
+
+#section-image3 {
+    display: block;
+    margin: 0 auto;
+}
+
+#section-image4 {
+    display: block;
+    margin: 0 auto;
+}
+
+.menu-item {
+    margin: 35px 0;
+    font-size: 18px;
+}
+
+.section-description {
+    font-size: .9em;
+    font-style: italic;
+    font-weight: normal;
+    border-bottom: 2px dotted rgb(213,213,213);
+    text-align: center;
+}
+
+.menu-item-name {
+    font-family: helvetica;
+    font-weight: bold;
+    border-bottom: 2px dotted rgb(213,213,213);
+}
+
+.menu-item-description {
+    font-style: italic;
+    font-size: .9em;
+    line-height: 1.5em;
+}
+
+.menu-item-price {
+    float: right;
+    font-weight: bold;
+    font-family: arial;
+    margin-top: -22px;
+}
+
+table, th, td {
+    max-width: 680px;
+    margin: 0 auto;
+    text-align: center;
+    border: 1px solid black;
+}
+
+.table-title-in-chinese {
+    font-family: georgia;
+    display: block;
+    font-size: 50px;
+    font-weight: normal;
+    margin: 20px 0;
+    text-align: center;
+}
+
+.table-title {
+    font-family: georgia;
+    display: block;
+    font-size: 50px;
+    font-weight: normal;
+    margin: 20px 0;
+    text-align: center;
+}
