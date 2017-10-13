@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Take Home Mid-term -->
+    <!-- WEIWEI SU -->
+    <!-- U17420699 -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script src="higher-hw.js"></script>
+    <title>Benford Chart</title>
+</head>
+<body>
+    <section class="Heading">
+        <h1>Benford</h1>
+        <p>Choose a Dataset: 
+            <select id="menu">
+                <option value="livejournal-g">livejournal</option>
+                <option value="librarybooks-g">librarybooks</option>
+                <option value="sunspots-g">sunspots</option>
+            </select>
+        </p>
+    </section>
+    <section class="chart">
+            <script type="text/javascript">
+                google.charts.load('current', {'packages':['corechart','bar']});
+                google.charts.setOnLoadCallback(drawChart);
+                
+                var lj = toPercentages(benford(livejournal));
+                var lb = toPercentages(benford(librarybooks));
+                var ss = toPercentages(benford(sunspots));
+                
+   
+                function drawChart() {
+                    //Dropdown Menu Selection
+                    document.getElementById("menu").onchange = function() {
+                        //livejournal
+                        if(this.selectedIndex == 0){
+                            var data = google.visualization.arrayToDataTable([
+                                ['Digit', 'Benford', 'Livejournal'],
+                                ['1', 0.301, lj.get("1")],
+                                ['2', 0.176, lj.get("2")],
+                                ['3', 0.125, lj.get("3")],
+                                ['4', 0.097, lj.get("4")],
+                                ['5', 0.079, lj.get("5")],
+                                ['6', 0.067, lj.get("6")],
+                                ['7', 0.058, lj.get("7")],
+                                ['8', 0.051, lj.get("8")],
+                                ['9', 0.046, lj.get("9")]
+                            ]);
+                            chart.draw(data, google.charts.Bar.convertOptions(options));
+                        }
+                        //librarybooks
+                        if(this.selectedIndex == 1){
+                            var data = google.visualization.arrayToDataTable([
+                                ['Digit', 'Benford', 'Librarybooks'],
+                                ['1', 0.301, lb.get("1")],
+                                ['2', 0.176, lb.get("2")],
+                                ['3', 0.125, lb.get("3")],
+                                ['4', 0.097, lb.get("4")],
+                                ['5', 0.079, lb.get("5")],
+                                ['6', 0.067, lb.get("6")],
+                                ['7', 0.058, lb.get("7")],
+                                ['8', 0.051, lb.get("8")],
+                                ['9', 0.046, lb.get("9")]
+                            ]);
+                            chart.draw(data, google.charts.Bar.convertOptions(options));
+                        }
+                        //sunspots
+                        if(this.selectedIndex == 2){
+                            var data = google.visualization.arrayToDataTable([
+                                ['Digit', 'Benford', 'sunspots'],
+                                ['1', 0.301, ss.get("1")],
+                                ['2', 0.176, ss.get("2")],
+                                ['3', 0.125, ss.get("3")],
+                                ['4', 0.097, ss.get("4")],
+                                ['5', 0.079, ss.get("5")],
+                                ['6', 0.067, ss.get("6")],
+                                ['7', 0.058, ss.get("7")],
+                                ['8', 0.051, ss.get("8")],
+                                ['9', 0.046, ss.get("9")]
+                            ]);
+                            chart.draw(data, google.charts.Bar.convertOptions(options));
+                        }
+                    }
+                    //Default display: LiveJournal
+                    var data = google.visualization.arrayToDataTable([
+                        ['Digit', 'Benford', 'Livejournal'],
+                        ['1', 0.301, lj.get("1")],
+                        ['2', 0.176, lj.get("2")],
+                        ['3', 0.125, lj.get("3")],
+                        ['4', 0.097, lj.get("4")],
+                        ['5', 0.079, lj.get("5")],
+                        ['6', 0.067, lj.get("6")],
+                        ['7', 0.058, lj.get("7")],
+                        ['8', 0.051, lj.get("8")],
+                        ['9', 0.046, lj.get("9")]
+                ]);
+
+                    var options = {
+                        chartArea: {width: '70%'},
+                        animation:{
+                            startup: true,
+                            duration: 1000,
+                            easing:'out'
+                        },
+                        title: '',
+                        hAxis: {
+                          title: 'Digit',
+                          minValue: 1,
+                        },
+                        vAxis: {
+                          title: 'Percent',
+                          format:'percent'
+                        }
+                    };
+                    var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
+                    chart.draw(data, options);
+                }
+            </script>
+              <div id="chart_div" style="width: 1000px; height: 500px;"></div>
+    </section>
+</body>
+</html>
+
