@@ -51,15 +51,7 @@ def to_grammar_hash(split_def_array)
   arrHash = arrHash.to_h
   #Maybe for the Extra Credit:
   #Removing that ridiculous non-sense whitespace that still left in non-term.
-  def trim_dat_ridiculous_space!(hash)
-    buf = {}
-    hash.each do |key, value|
-      buf[key.strip] = value
-    end
-    buf
-  end
-  newArrHash = trim_dat_ridiculous_space!(arrHash)
-  newArrHash
+  arrHash.map{ |k, v| [k.strip, v] }.to_h
 end
 
 # Returns true iff s is a non-terminal
