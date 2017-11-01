@@ -1,4 +1,4 @@
-# Bootstrap-Beginner-Project
+# Web-App-Design-Course-HW-and-Projects
 Just a projects shows some basic functions of Bootstrap. 
 BOOTSTRAP VERSION: 3.7.2
 
