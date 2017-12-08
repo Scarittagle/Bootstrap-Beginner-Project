@@ -8,9 +8,13 @@
 Because this is a Database-backed Ruby Application, there's a few things you should done before you try to run it.
 
 Framework: Sinatra, Bootstrap
+
 Database: MySQL
-API & Libraries: Google Charts JS, jQuery, 
+
+API & Libraries: Google Charts, jQuery
+
 Language: Ruby, HTML, JavaScript with AJAX, JSON
+
 
 # Step 1:
 Import the `database.sql` file to your Database, in this instance I used MySQL. (Also the App)
