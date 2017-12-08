@@ -1,0 +1,120 @@
+<!--
+Take-Home-Final
+#WEIWEI SU
+#U17420699
+#display.erb
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <!-- Includes Dependencies here: Google Charts -->
+  <script src="https://www.gstatic.com/charts/loader.js"></script>
+  <!-- BOOTSTRAP CDN & jQuery library for navbar -->
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  <title>Name Surfer</title>
+</head>
+<!-- Some Boostrap touch up -->
+<body class="container-fluid">
+<!-- header -->
+<header class="jumbotron">
+  <h1>Name Surfer</h1>
+  <!-- Input Section -->
+  <p>Enter the Name here: </p>
+  <input id="input" type="text" name="word">
+</header>
+
+<!-- I followed and modified some code from Dr.V's AJAX Demo -->
+<div class="chart">
+  <script id="results">
+    let globalResult = [];
+    const defaultData = ["None", 1200, 1200, 1200, 1200, 1200, 1200, 1200, 1200, 1200, 1200, 1200];
+    $(document).ready(() => {
+        // set a listener on the textbox
+        $('#input').on("change", (evt) => {
+            let text = $('#input').val();
+            // the {text: text} sends a parameter named text with the
+            // value of what was typed in the textbox
+            $.get("/display", {text: text})
+                .done((data) => {
+                    globalResult = data['result'];
+                    //Pop-up msg if Name not found.
+                    if (globalResult == "Name not found"){
+                        alert("Name not found")
+                    }
+                    $('#input').val('');   // reset the textbox
+                    //Draw Graph
+                    google.charts.load('current', {'packages':['corechart']});
+                    google.charts.setOnLoadCallback(drawChart);
+
+                    function drawChart() {
+                        var data = google.visualization.arrayToDataTable([
+                            ['Year', globalResult[0], defaultData[0]],
+                            ['1900', globalResult[1], defaultData[1]],
+                            ['1910', globalResult[2], defaultData[2]],
+                            ['1920', globalResult[3], defaultData[3]],
+                            ['1930', globalResult[4], defaultData[4]],
+                            ['1940', globalResult[5], defaultData[0]],
+                            ['1950', globalResult[6], defaultData[0]],
+                            ['1960', globalResult[7], defaultData[0]],
+                            ['1970', globalResult[8], defaultData[0]],
+                            ['1980', globalResult[9], defaultData[0]],
+                            ['1990', globalResult[10], defaultData[0]],
+                            ['2000', globalResult[11], defaultData[0]]
+                        ]);
+
+                        var options = {
+                            title: 'Rank of Popularity of Birth names',
+                            curveType: 'function',
+                            legend: {position: 'bottom'},
+                            animation: {
+                                startup: true,
+                                duration: 1000,
+                                easing: 'out'
+                            },
+                            hAxis: {
+                                title: 'Years'
+                            },
+                            vAxis: {
+                                viewWindow: {
+                                    min: 0,
+                                    max: 1100,
+                                },
+                                direction: -1,
+                                title: 'Ranks'
+                            }
+                        };
+
+                        var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+
+                        chart.draw(data, options);
+                        //Swap Values
+                        globalResult.forEach(function(value){
+                            defaultData.push(value);
+                            defaultData.shift();
+                        })
+
+                    }
+
+                })
+                .fail((xhr) => {
+                    alert('Problem contacting server');
+                    console.log(xhr);
+                });
+        });
+    });
+  </script>
+  <div id="curve_chart" style="width: 1000px; height: 500px"></div>
+</div>
+
+<p>
+  <br>App Created by WEIWEI SU. 2017<br/>
+  <br>University of South Florida<br/>
+</p>
+</body>
+</html>
