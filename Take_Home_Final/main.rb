@@ -19,7 +19,11 @@ end
 
 #I followed and modified some code from Dr.V's AJAX Demo
 get '/display' do
+
   if params['text']
+    #Return JSON
+    content_type :json
+    @value = nil
     results.each do |row|
       if row.has_value?(params['text'])
         @value = row.values
@@ -27,13 +31,13 @@ get '/display' do
         @value.map!{|x| x == 0 ? 1001 : x}.flatten!
         #Pop last element since is useless
         @value.pop
-      else
-        #Returning Error message if not found
-        {:result => "Name not found"}.to_json
+      else if @value == nil
+             @value = ["Name not found", -1]
+             #Returning Error message if not found
+             {:result => @value}.to_json
+           end
       end
     end
-    #Return JSON
-    content_type :json
     #Returning Array of Specific data back to erb
     {:result => @value}.to_json
   else

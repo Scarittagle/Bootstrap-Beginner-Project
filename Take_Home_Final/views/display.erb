@@ -44,8 +44,10 @@ Take-Home-Final
                 .done((data) => {
                     globalResult = data['result'];
                     //Pop-up msg if Name not found.
-                    if (globalResult == "Name not found"){
+                    if (globalResult[1] == -1){
                         alert("Name not found")
+                        //Force Reload Page
+                        location.reload(true);
                     }
                     $('#input').val('');   // reset the textbox
                     //Draw Graph
