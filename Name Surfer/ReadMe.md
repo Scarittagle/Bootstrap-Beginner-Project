@@ -10,7 +10,7 @@ Framework: Sinatra, Bootstrap
 
 Database: MySQL
 
-API & Libraries: Google Charts JS, jQuery
+API & Libraries: Google Charts, jQuery
 
 Language: Ruby, HTML, JavaScript with AJAX, JSON
 
